@@ -34,7 +34,7 @@
             "@type": "Organization",
             "name": ""},"author": {
                 "@type": "Person",
-                "name": "xxxx"
+                "name": "parkso"
             },"description": ""
     }
     </script></head>
@@ -70,7 +70,7 @@
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Redis持久化机制</h1><div class="post-meta">
-            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>xxxx</a></span></div>
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>parkso</a></span></div>
             <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-01-16">2023-01-16</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;9153 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;19 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
@@ -163,10 +163,10 @@
 <p>​<img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="https://raw.githubusercontent.com/Parksosaurus/ParksoBlog/main/images/image-20230116181340-b6hx6au.png"
-        data-srcset="https://raw.githubusercontent.com/Parksosaurus/ParksoBlog/main/images/image-20230116181340-b6hx6au.png, https://raw.githubusercontent.com/Parksosaurus/ParksoBlog/main/images/image-20230116181340-b6hx6au.png 1.5x, https://raw.githubusercontent.com/Parksosaurus/ParksoBlog/main/images/image-20230116181340-b6hx6au.png 2x"
+        data-src="assets/image-20230116181340-b6hx6au.png"
+        data-srcset="assets/image-20230116181340-b6hx6au.png, assets/image-20230116181340-b6hx6au.png 1.5x, assets/image-20230116181340-b6hx6au.png 2x"
         data-sizes="auto"
-        alt="https://raw.githubusercontent.com/Parksosaurus/ParksoBlog/main/images/image-20230116181340-b6hx6au.png"
+        alt="assets/image-20230116181340-b6hx6au.png"
         title="image" />​</p>
 <h4 id="save命令执行时的服务器状态">SAVE命令执行时的服务器状态</h4>
 <p>​<code>SAVE</code>​命令执行时，Redis服务器会被阻塞。</p>
@@ -253,20 +253,20 @@
 <p>​<img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="https://raw.githubusercontent.com/Parksosaurus/ParksoBlog/main/images/image-20230116160431-snb0bkk.png"
-        data-srcset="https://raw.githubusercontent.com/Parksosaurus/ParksoBlog/main/images/image-20230116160431-snb0bkk.png, https://raw.githubusercontent.com/Parksosaurus/ParksoBlog/main/images/image-20230116160431-snb0bkk.png 1.5x, https://raw.githubusercontent.com/Parksosaurus/ParksoBlog/main/images/image-20230116160431-snb0bkk.png 2x"
+        data-src="assets/image-20230116160431-snb0bkk.png"
+        data-srcset="assets/image-20230116160431-snb0bkk.png, assets/image-20230116160431-snb0bkk.png 1.5x, assets/image-20230116160431-snb0bkk.png 2x"
         data-sizes="auto"
-        alt="https://raw.githubusercontent.com/Parksosaurus/ParksoBlog/main/images/image-20230116160431-snb0bkk.png"
+        alt="assets/image-20230116160431-snb0bkk.png"
         title="image" />​</p>
 <p><strong>只有在发生修改内存数据的情况时，物理内存才会被复制一份。</strong></p>
 <p>这样是为了防止 fork 创建子进程时，由于物理内存数据的复制时间过长而导致父进程长时间阻塞的问题。</p>
 <p>​<img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="https://raw.githubusercontent.com/Parksosaurus/ParksoBlog/main/images/image-20230116160458-hifyfmc.png"
-        data-srcset="https://raw.githubusercontent.com/Parksosaurus/ParksoBlog/main/images/image-20230116160458-hifyfmc.png, https://raw.githubusercontent.com/Parksosaurus/ParksoBlog/main/images/image-20230116160458-hifyfmc.png 1.5x, https://raw.githubusercontent.com/Parksosaurus/ParksoBlog/main/images/image-20230116160458-hifyfmc.png 2x"
+        data-src="assets/image-20230116160458-hifyfmc.png"
+        data-srcset="assets/image-20230116160458-hifyfmc.png, assets/image-20230116160458-hifyfmc.png 1.5x, assets/image-20230116160458-hifyfmc.png 2x"
         data-sizes="auto"
-        alt="https://raw.githubusercontent.com/Parksosaurus/ParksoBlog/main/images/image-20230116160458-hifyfmc.png"
+        alt="assets/image-20230116160458-hifyfmc.png"
         title="image" />​</p>
 <p>当然，操作系统复制父进程页表的时候，父进程也是阻塞中的，不过页表的大小相比实际的物理内存小很多，所以通常复制页表的过程是比较快的。</p>
 <p>不过，如果父进程的内存数据非常大，那自然页表也会很大，这时父进程在通过 fork 创建子进程的时候，阻塞的时间也越久。</p>
@@ -289,20 +289,20 @@
 <p>​<img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="https://raw.githubusercontent.com/Parksosaurus/ParksoBlog/main/images/image-20230116161120-j12y876.png"
-        data-srcset="https://raw.githubusercontent.com/Parksosaurus/ParksoBlog/main/images/image-20230116161120-j12y876.png, https://raw.githubusercontent.com/Parksosaurus/ParksoBlog/main/images/image-20230116161120-j12y876.png 1.5x, https://raw.githubusercontent.com/Parksosaurus/ParksoBlog/main/images/image-20230116161120-j12y876.png 2x"
+        data-src="assets/image-20230116161120-j12y876.png"
+        data-srcset="assets/image-20230116161120-j12y876.png, assets/image-20230116161120-j12y876.png 1.5x, assets/image-20230116161120-j12y876.png 2x"
         data-sizes="auto"
-        alt="https://raw.githubusercontent.com/Parksosaurus/ParksoBlog/main/images/image-20230116161120-j12y876.png"
+        alt="assets/image-20230116161120-j12y876.png"
         title="image" />​</p>
 <h2 id="开启aof持久化">开启AOF持久化</h2>
 <p>在 Redis 中 AOF 持久化 功能默认是不开启的，需要我们修改 <code>redis.conf</code>​ 配置文件中的以下参数：</p>
 <p>​<img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="https://raw.githubusercontent.com/Parksosaurus/ParksoBlog/main/images/image-20230116161225-z4t8o3q.png"
-        data-srcset="https://raw.githubusercontent.com/Parksosaurus/ParksoBlog/main/images/image-20230116161225-z4t8o3q.png, https://raw.githubusercontent.com/Parksosaurus/ParksoBlog/main/images/image-20230116161225-z4t8o3q.png 1.5x, https://raw.githubusercontent.com/Parksosaurus/ParksoBlog/main/images/image-20230116161225-z4t8o3q.png 2x"
+        data-src="assets/image-20230116161225-z4t8o3q.png"
+        data-srcset="assets/image-20230116161225-z4t8o3q.png, assets/image-20230116161225-z4t8o3q.png 1.5x, assets/image-20230116161225-z4t8o3q.png 2x"
         data-sizes="auto"
-        alt="https://raw.githubusercontent.com/Parksosaurus/ParksoBlog/main/images/image-20230116161225-z4t8o3q.png"
+        alt="assets/image-20230116161225-z4t8o3q.png"
         title="image" />​</p>
 <h2 id="aof持久化过程">AOF持久化过程</h2>
 <p>AOF持久化功能的实现可以分为<strong>命令追加</strong>、<strong>文件写入</strong>、<strong>文件同步</strong>三个步骤</p>
@@ -312,10 +312,10 @@
 <p>​<img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="https://raw.githubusercontent.com/Parksosaurus/ParksoBlog/main/images/image-20230413144927-rdjembx.png"
-        data-srcset="https://raw.githubusercontent.com/Parksosaurus/ParksoBlog/main/images/image-20230413144927-rdjembx.png, https://raw.githubusercontent.com/Parksosaurus/ParksoBlog/main/images/image-20230413144927-rdjembx.png 1.5x, https://raw.githubusercontent.com/Parksosaurus/ParksoBlog/main/images/image-20230413144927-rdjembx.png 2x"
+        data-src="assets/image-20230413144927-rdjembx.png"
+        data-srcset="assets/image-20230413144927-rdjembx.png, assets/image-20230413144927-rdjembx.png 1.5x, assets/image-20230413144927-rdjembx.png 2x"
         data-sizes="auto"
-        alt="https://raw.githubusercontent.com/Parksosaurus/ParksoBlog/main/images/image-20230413144927-rdjembx.png"
+        alt="assets/image-20230413144927-rdjembx.png"
         title="image" />​</p>
 <h3 id="命令追加">命令追加</h3>
 <p>当AOF持久化功能处于打开状态时，服务器在执行完一个写命令之后，会以协议格式将被执行的写命令追加到服务器状态的<strong>aof_buf缓冲区</strong>的末尾：</p>
@@ -370,10 +370,10 @@
 <p>​<img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="https://raw.githubusercontent.com/Parksosaurus/ParksoBlog/main/images/image-20230116163259-b1mi258.png"
-        data-srcset="https://raw.githubusercontent.com/Parksosaurus/ParksoBlog/main/images/image-20230116163259-b1mi258.png, https://raw.githubusercontent.com/Parksosaurus/ParksoBlog/main/images/image-20230116163259-b1mi258.png 1.5x, https://raw.githubusercontent.com/Parksosaurus/ParksoBlog/main/images/image-20230116163259-b1mi258.png 2x"
+        data-src="assets/image-20230116163259-b1mi258.png"
+        data-srcset="assets/image-20230116163259-b1mi258.png, assets/image-20230116163259-b1mi258.png 1.5x, assets/image-20230116163259-b1mi258.png 2x"
         data-sizes="auto"
-        alt="https://raw.githubusercontent.com/Parksosaurus/ParksoBlog/main/images/image-20230116163259-b1mi258.png"
+        alt="assets/image-20230116163259-b1mi258.png"
         title="image" />​</p>
 <ol>
 <li>执行客户端的命令</li>
@@ -383,10 +383,10 @@
 <p>​<img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="https://raw.githubusercontent.com/Parksosaurus/ParksoBlog/main/images/image-20230116163259-b1mi258.png"
-        data-srcset="https://raw.githubusercontent.com/Parksosaurus/ParksoBlog/main/images/image-20230116163259-b1mi258.png, https://raw.githubusercontent.com/Parksosaurus/ParksoBlog/main/images/image-20230116163259-b1mi258.png 1.5x, https://raw.githubusercontent.com/Parksosaurus/ParksoBlog/main/images/image-20230116163259-b1mi258.png 2x"
+        data-src="assets/image-20230116163259-b1mi258.png"
+        data-srcset="assets/image-20230116163259-b1mi258.png, assets/image-20230116163259-b1mi258.png 1.5x, assets/image-20230116163259-b1mi258.png 2x"
         data-sizes="auto"
-        alt="https://raw.githubusercontent.com/Parksosaurus/ParksoBlog/main/images/image-20230116163259-b1mi258.png"
+        alt="assets/image-20230116163259-b1mi258.png"
         title="image" />​</p>
 <p>当进行 AOF持久化的时候，对于 aof_buf 中的数据需要写入并同步到 appendonly.aof 文件中</p>
 <p>​<img
@@ -491,10 +491,10 @@
 <p>​<img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="https://raw.githubusercontent.com/Parksosaurus/ParksoBlog/main/images/image-20230116160431-snb0bkk.png"
-        data-srcset="https://raw.githubusercontent.com/Parksosaurus/ParksoBlog/main/images/image-20230116160431-snb0bkk.png, https://raw.githubusercontent.com/Parksosaurus/ParksoBlog/main/images/image-20230116160431-snb0bkk.png 1.5x, https://raw.githubusercontent.com/Parksosaurus/ParksoBlog/main/images/image-20230116160431-snb0bkk.png 2x"
+        data-src="assets/image-20230116160431-snb0bkk.png"
+        data-srcset="assets/image-20230116160431-snb0bkk.png, assets/image-20230116160431-snb0bkk.png 1.5x, assets/image-20230116160431-snb0bkk.png 2x"
         data-sizes="auto"
-        alt="https://raw.githubusercontent.com/Parksosaurus/ParksoBlog/main/images/image-20230116160431-snb0bkk.png"
+        alt="assets/image-20230116160431-snb0bkk.png"
         title="image" />​</p>
 <p>这样一来，子进程就共享了父进程的物理内存数据了，这样能够<strong>节约物理内存资源</strong>，页表对应的页表项的属性会标记该物理内存的权限为<strong>只读</strong>。</p>
 <p>不过，当父进程或者子进程在向这个内存发起写操作时，CPU 就会触发​<strong>写保护中断</strong>​，这个写保护中断是由于违反权限导致的，然后操作系统会在「写保护中断处理函数」里进行​<strong>物理内存的复制</strong>​，并重新设置其内存映射关系，将父子进程的内存读写权限设置为​<strong>可读写</strong>​，最后才会对内存进行写操作，这个过程被称为「​<em><em>写时复制(<strong>​</strong></em>Copy On Write</em>**​ <strong>)</strong> ​」。</p>
