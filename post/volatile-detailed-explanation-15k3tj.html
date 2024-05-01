@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>volatile详解 - 我的全新 Hugo 网站</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="https://Parksosaurus.github.io/post/volatile-detailed-explanation-15k3tj.html">
+  <meta property="og:site_name" content="我的全新 Hugo 网站">
+  <meta property="og:title" content="volatile详解">
+  <meta property="og:description" content="volatile详解 简介 volatile是JVM提供的轻量级的同步机制 保证可见性 保证有序性，防止指令重排 不保证原子性(需要借助synchro">
+  <meta property="og:locale" content="zh-CN">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2023-02-19T14:15:28+08:00">
+    <meta property="article:modified_time" content="2024-05-01T15:42:02+08:00">
+<meta name="twitter:card" content="summary"><meta name="twitter:title" content="volatile详解">
+<meta name="twitter:description" content="volatile详解 简介 volatile是JVM提供的轻量级的同步机制 保证可见性 保证有序性，防止指令重排 不保证原子性(需要借助synchro">
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://Parksosaurus.github.io/post/volatile-detailed-explanation-15k3tj.html" /><link rel="next" href="https://Parksosaurus.github.io/posts/test/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "volatile详解",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/Parksosaurus.github.io\/post\/volatile-detailed-explanation-15k3tj.html"
+        },"genre": "posts","wordcount":  2078 ,
+        "url": "https:\/\/Parksosaurus.github.io\/post\/volatile-detailed-explanation-15k3tj.html","datePublished": "2023-02-19T14:15:28+08:00","dateModified": "2024-05-01T15:42:02+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "xxxx"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="我的全新 Hugo 网站">My cool site</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="我的全新 Hugo 网站">My cool site</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">volatile详解</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>xxxx</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-02-19">2023-02-19</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;2078 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;5 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#volatile的happens-before-关系">volatile的happens-before 关系</a></li>
+    <li><a href="#volatile禁止重排序">volatile禁止重排序</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="volatile详解">volatile详解</h1>
+<h1 id="简介">简介</h1>
+<p>volatile是JVM提供的轻量级的同步机制</p>
+<ol>
+<li>保证可见性</li>
+<li>保证有序性，防止指令重排</li>
+<li>不保证原子性(需要借助synchronized 或者 CAS)</li>
+</ol>
+<h1 id="volatile怎么保证多个线程之间可见性的-lock前缀指令">volatile怎么保证多个线程之间可见性的？—— lock前缀指令</h1>
+<p>再来看看JMM内存模型</p>
+<p>所谓可见性，就是当一条线程修改了共享变量的值，新值对于其他线程来说是可以立即得知的</p>
+<p>​<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://raw.githubusercontent.com/Parksosaurus/ParksoBlog/main/images/image-20230219144519-c6kw6k2.png"
+        data-srcset="https://raw.githubusercontent.com/Parksosaurus/ParksoBlog/main/images/image-20230219144519-c6kw6k2.png, https://raw.githubusercontent.com/Parksosaurus/ParksoBlog/main/images/image-20230219144519-c6kw6k2.png 1.5x, https://raw.githubusercontent.com/Parksosaurus/ParksoBlog/main/images/image-20230219144519-c6kw6k2.png 2x"
+        data-sizes="auto"
+        alt="https://raw.githubusercontent.com/Parksosaurus/ParksoBlog/main/images/image-20230219144519-c6kw6k2.png"
+        title="image" />​</p>
+<p>每个线程都有自己独立的工作空间，为了匹配CPU的运行速度，他们不会直接从内存中读取数据，而是将数据拷贝一份到cpu缓存中(即每个线程自己的工作内存)，他们之间的相互交互，是通过内存来完成的。</p>
+<p>根据JMM内存模型的8大原子操作，每个线程在将数据操作完<code>store</code>回主存前，会加<code>lock</code>指令来锁定区域的缓存(缓存行锁定)，根据MESI缓存一致性协议，总线通过侦听器发现数据被修改，会立即让其他线程工作内存中不一致的副本立即失效。</p>
+<p>等到当前线程将更改后的数据<code>write</code>​回主存后，立即执行<code>unlock</code>​指令</p>
+<p>​<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://raw.githubusercontent.com/Parksosaurus/ParksoBlog/main/images/image-20230219145313-hocadwf.png"
+        data-srcset="https://raw.githubusercontent.com/Parksosaurus/ParksoBlog/main/images/image-20230219145313-hocadwf.png, https://raw.githubusercontent.com/Parksosaurus/ParksoBlog/main/images/image-20230219145313-hocadwf.png 1.5x, https://raw.githubusercontent.com/Parksosaurus/ParksoBlog/main/images/image-20230219145313-hocadwf.png 2x"
+        data-sizes="auto"
+        alt="https://raw.githubusercontent.com/Parksosaurus/ParksoBlog/main/images/image-20230219145313-hocadwf.png"
+        title="image" />​</p>
+<p>此时，其他线程再重新读取更新后的数据，再拷贝到自己的工作内存。总线侦听机制会在总线上检测线程的数据，发现有线程做了更改时准备<code>store</code>​​​回主内存时，它就会立刻将其他线程工作内存中的副本置位无效，然后从新到主存获取更新后的值。</p>
+<blockquote>
+<p>如果对声明了 volatile 的变量进行写操作，JVM 就会向处理器发送一条 lock 前缀的指令，将这个变量所在缓存行的数据写回到系统内存。</p>
+<p>为了保证各个处理器的缓存是一致的，实现了缓存一致性协议(MESI)，每个处理器通过嗅探在总线上传播的数据来检查自己缓存的值是不是过期了，当处理器发现自己缓存行对应的内存地址被修改，就会将当前处理器的缓存行设置成无效状态，当处理器对这个数据进行修改操作的时候，会重新从系统内存中把数据读到处理器缓存里。</p>
+<p>所有多核处理器下还会完成：当处理器发现本地缓存失效后，就会从内存中重读该变量数据，即可以获取当前最新值。</p>
+<p>volatile 变量通过这样的机制就使得每个线程都能获得该变量的最新值。</p>
+</blockquote>
+<p>所以</p>
+<blockquote>
+<p>lock 前缀的指令在多核处理器下会引发两件事情:</p>
+<ul>
+<li><strong>将当前处理器缓存行的数据写回到系统内存。</strong></li>
+<li><strong>写回内存的操作会使在其他 CPU 里缓存了该内存地址的数据无效。</strong></li>
+</ul>
+</blockquote>
+<p>除了使用 volatile 关键字来保证内存可见性之外，使用<code>synchronized</code>或<code>Lock</code>锁也能保证变量的内存可见性。只是相比而言使用 <code>volatile</code>​关键字开销更小，是轻量级的锁。</p>
+<p>这就是内存可见性的原理。</p>
+<h1 id="volatile关键字是怎么保证有序性的--内存屏障">volatile关键字是怎么保证有序性的？ —— 内存屏障</h1>
+<p>使用volatile关键字修饰共享变量便可以​<strong>禁止指令重排序</strong>​。若用volatile修饰共享变量，在JVM底层volatile是采用“​<strong>内存屏障</strong>​”来实现禁止特定类型的处理器重排序。加入volatile关键字时，会多出一个lock前缀指令，lock前缀指令实际上相当于一个内存屏障（也成内存栅栏），内存屏障会提供3个功能：</p>
+<ol>
+<li>它确保指令重排序时不会把其后面的指令排到内存屏障之前的位置，也不会把前面的指令排到内存屏障的后面；即在执行到内存屏障这句指令时，在它前面的操作已经全部完成；</li>
+<li>它会强制将对缓存的修改操作立即写入主存；</li>
+<li>如果是写操作，它会导致其他CPU中对应的缓存行无效。</li>
+</ol>
+<p>JMM具备一些先天的有序性，通过Happens-Before原则就可以保证的一定的有序性。</p>
+<h2 id="volatile的happens-before-关系">volatile的happens-before 关系</h2>
+<p>happens-before 规则中有一条是 volatile 变量规则：对一个 volatile 域的写，happens-before 于任意后续对这个 volatile 域的读。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">//假设线程A执行writer方法，线程B执行reader方法</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">class</span> <span class="nc">VolatileExample</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">0</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">volatile</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="n">flag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">writer</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">1</span><span class="p">;</span><span class="w">              </span><span class="c1">// 1 线程A修改共享变量</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">flag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span><span class="w">        </span><span class="c1">// 2 线程A写volatile变量</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">  
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">reader</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">flag</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">         </span><span class="c1">// 3 线程B读同一个volatile变量</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="p">;</span><span class="w">          </span><span class="c1">// 4 线程B读共享变量</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="err">……</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><p>根据 happens-before 规则，上面过程会建立 3 类 happens-before 关系。</p>
+<ul>
+<li>根据程序次序规则：1 happens-before 2 且 3 happens-before 4。</li>
+<li>根据 volatile 规则：2 happens-before 3。</li>
+<li>根据 happens-before 的传递性规则：1 happens-before 4。</li>
+</ul>
+<p>​<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://raw.githubusercontent.com/Parksosaurus/ParksoBlog/main/images/image-20230219153214-7z7qerl.png"
+        data-srcset="https://raw.githubusercontent.com/Parksosaurus/ParksoBlog/main/images/image-20230219153214-7z7qerl.png, https://raw.githubusercontent.com/Parksosaurus/ParksoBlog/main/images/image-20230219153214-7z7qerl.png 1.5x, https://raw.githubusercontent.com/Parksosaurus/ParksoBlog/main/images/image-20230219153214-7z7qerl.png 2x"
+        data-sizes="auto"
+        alt="https://raw.githubusercontent.com/Parksosaurus/ParksoBlog/main/images/image-20230219153214-7z7qerl.png"
+        title="image" />​</p>
+<p>因为以上规则，当线程 A 将 volatile 变量 flag 更改为 true 后，线程 B 能够迅速感知。</p>
+<h2 id="volatile禁止重排序">volatile禁止重排序</h2>
+<p>为了性能优化，JMM 在不改变正确语义的前提下，会允许编译器和处理器对指令序列进行重排序。JMM 提供了<strong>内存屏障</strong>阻止这种重排序。</p>
+<p>Java 编译器会在生成指令系列时在适当的位置会插入内存屏障指令来禁止特定类型的处理器重排序。</p>
+<p>​<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://raw.githubusercontent.com/Parksosaurus/ParksoBlog/main/images/image-20230219153454-fhnqeyx.png"
+        data-srcset="https://raw.githubusercontent.com/Parksosaurus/ParksoBlog/main/images/image-20230219153454-fhnqeyx.png, https://raw.githubusercontent.com/Parksosaurus/ParksoBlog/main/images/image-20230219153454-fhnqeyx.png 1.5x, https://raw.githubusercontent.com/Parksosaurus/ParksoBlog/main/images/image-20230219153454-fhnqeyx.png 2x"
+        data-sizes="auto"
+        alt="https://raw.githubusercontent.com/Parksosaurus/ParksoBlog/main/images/image-20230219153454-fhnqeyx.png"
+        title="image" />​</p>
+<p>NO  表示禁止重排序。</p>
+<p>为了实现 volatile 内存语义时，编译器在生成字节码时，会在指令序列中插入内存屏障来禁止特定类型的处理器重排序。</p>
+<p>对于编译器来说，发现一个最优布置来最小化插入屏障的总数几乎是不可能的，为此，JMM 采取了保守的策略。</p>
+<ul>
+<li>在每个 volatile 写操作的前面插入一个 StoreStore 屏障。</li>
+<li>在每个 volatile 写操作的后面插入一个 StoreLoad 屏障。</li>
+<li>在每个 volatile 读操作的后面插入一个 LoadLoad 屏障。</li>
+<li>在每个 volatile 读操作的后面插入一个 LoadStore 屏障。</li>
+</ul>
+<p>volatile 写是在前面和后面分别插入内存屏障，而 volatile 读操作是在后面插入两个内存屏障。</p>
+<table>
+<thead>
+<tr>
+<th>内存屏障</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>StoreStore 屏障</td>
+<td>禁止上面的普通写和下面的 volatile 写重排序。</td>
+</tr>
+<tr>
+<td>StoreLoad 屏障</td>
+<td>防止上面的 volatile 写与下面可能有的 volatile 读/写重排序。</td>
+</tr>
+<tr>
+<td>LoadLoad 屏障</td>
+<td>禁止下面所有的普通读操作和上面的 volatile 读重排序。</td>
+</tr>
+<tr>
+<td>LoadStore 屏障</td>
+<td>禁止下面所有的普通写操作和上面的 volatile 读重排序。</td>
+</tr>
+</tbody>
+</table>
+<p>​<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://raw.githubusercontent.com/Parksosaurus/ParksoBlog/main/images/image-20230219153854-vy9auid.png"
+        data-srcset="https://raw.githubusercontent.com/Parksosaurus/ParksoBlog/main/images/image-20230219153854-vy9auid.png, https://raw.githubusercontent.com/Parksosaurus/ParksoBlog/main/images/image-20230219153854-vy9auid.png 1.5x, https://raw.githubusercontent.com/Parksosaurus/ParksoBlog/main/images/image-20230219153854-vy9auid.png 2x"
+        data-sizes="auto"
+        alt="https://raw.githubusercontent.com/Parksosaurus/ParksoBlog/main/images/image-20230219153854-vy9auid.png"
+        title="image" />​</p>
+<p>​<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://raw.githubusercontent.com/Parksosaurus/ParksoBlog/main/images/image-20230219153858-sdx0l06.png"
+        data-srcset="https://raw.githubusercontent.com/Parksosaurus/ParksoBlog/main/images/image-20230219153858-sdx0l06.png, https://raw.githubusercontent.com/Parksosaurus/ParksoBlog/main/images/image-20230219153858-sdx0l06.png 1.5x, https://raw.githubusercontent.com/Parksosaurus/ParksoBlog/main/images/image-20230219153858-sdx0l06.png 2x"
+        data-sizes="auto"
+        alt="https://raw.githubusercontent.com/Parksosaurus/ParksoBlog/main/images/image-20230219153858-sdx0l06.png"
+        title="image" />​</p>
+<p>‍</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2024-05-01</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://Parksosaurus.github.io/post/volatile-detailed-explanation-15k3tj.html" data-title="volatile详解"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://Parksosaurus.github.io/post/volatile-detailed-explanation-15k3tj.html"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://Parksosaurus.github.io/post/volatile-detailed-explanation-15k3tj.html" data-title="volatile详解"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://Parksosaurus.github.io/post/volatile-detailed-explanation-15k3tj.html" data-title="volatile详解"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://Parksosaurus.github.io/post/volatile-detailed-explanation-15k3tj.html" data-title="volatile详解"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+            <a href="/posts/test/" class="next" rel="next" title="Test">Test<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.125.4">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2024</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">xxxx</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
