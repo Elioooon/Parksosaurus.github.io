@@ -3,5 +3,13 @@
         <title>Categories - Category - 我的全新 Hugo 网站</title>
         <link>https://Parksosaurus.github.io/categories/</link>
         <description>Categories - Category - 我的全新 Hugo 网站</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><atom:link href="https://Parksosaurus.github.io/categories/" rel="self" type="application/rss+xml" /></channel>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Mon, 16 Jan 2023 14:40:51 &#43;0800</lastBuildDate><atom:link href="https://Parksosaurus.github.io/categories/" rel="self" type="application/rss+xml" /><item>
+    <title>CS技术</title>
+    <link>https://Parksosaurus.github.io/categories/cs%E6%8A%80%E6%9C%AF/</link>
+    <pubDate>Mon, 16 Jan 2023 14:40:51 &#43;0800</pubDate>
+    <author>xxxx</author>
+    <guid>https://Parksosaurus.github.io/categories/cs%E6%8A%80%E6%9C%AF/</guid>
+    <description><![CDATA[]]></description>
+</item>
+</channel>
 </rss>
