@@ -3,7 +3,15 @@
         <title>CS技术 - Category - 我的全新 Hugo 网站</title>
         <link>https://Parksosaurus.github.io/categories/cs%E6%8A%80%E6%9C%AF/</link>
         <description>CS技术 - Category - 我的全新 Hugo 网站</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Mon, 16 Jan 2023 14:40:51 &#43;0800</lastBuildDate><atom:link href="https://Parksosaurus.github.io/categories/cs%E6%8A%80%E6%9C%AF/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Thu, 02 May 2024 17:03:36 &#43;0800</lastBuildDate><atom:link href="https://Parksosaurus.github.io/categories/cs%E6%8A%80%E6%9C%AF/" rel="self" type="application/rss+xml" /><item>
+    <title>纵览设计模式-01-导论</title>
+    <link>https://Parksosaurus.github.io/post/comeration-design-mode01introduction-z2wtveo.html</link>
+    <pubDate>Thu, 02 May 2024 17:03:36 &#43;0800</pubDate>
+    <author>parkso</author>
+    <guid>https://Parksosaurus.github.io/post/comeration-design-mode01introduction-z2wtveo.html</guid>
+    <description><![CDATA[纵览设计模式-01-导论 概述 在1994年,由Erich Gamma、Richard Helm、Ralph Johnson和John Vlissides 四人合著出版了]]></description>
+</item>
+<item>
     <title>Redis持久化机制</title>
     <link>https://Parksosaurus.github.io/post/redis-persistence-mechanism-zqmfur.html</link>
     <pubDate>Mon, 16 Jan 2023 14:40:51 &#43;0800</pubDate>
