@@ -3,9 +3,17 @@
         <title>我的全新 Hugo 网站</title>
         <link>https://Parksosaurus.github.io/</link>
         <description>This is my cool site</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Thu, 02 May 2024 11:36:48 &#43;0800</lastBuildDate>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Thu, 02 May 2024 17:03:36 &#43;0800</lastBuildDate>
             <atom:link href="https://Parksosaurus.github.io/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>纵览设计模式-01-导论</title>
+    <link>https://Parksosaurus.github.io/post/comeration-design-mode01introduction-z2wtveo.html</link>
+    <pubDate>Thu, 02 May 2024 17:03:36 &#43;0800</pubDate>
+    <author>xxxx</author>
+    <guid>https://Parksosaurus.github.io/post/comeration-design-mode01introduction-z2wtveo.html</guid>
+    <description><![CDATA[纵览设计模式-01-导论 概述 在1994年,由Erich Gamma、Richard Helm、Ralph Johnson和John Vlissides 四人合著出版了]]></description>
+</item>
+<item>
     <title>1400-1600</title>
     <link>https://Parksosaurus.github.io/post/1400-1600-zlnw6e.html</link>
     <pubDate>Thu, 02 May 2024 11:36:48 &#43;0800</pubDate>
