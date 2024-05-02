@@ -7,7 +7,7 @@
         <title>1400-1600 - 我的全新 Hugo 网站</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="https://Parksosaurus.github.io/post/1400-1600-zlnw6e.html">
   <meta property="og:site_name" content="我的全新 Hugo 网站">
   <meta property="og:title" content="1400-1600">
-  <meta property="og:description" content="1400-1600 覆盖所有点的最少矩形数目 题目描述 给你一个二维整数数组 point ，其中 points[i] = [xi, yi] 表示二维平面内的一个点。同时给你一个整数 w 。你需要用矩形 覆盖所有 点。 每">
+  <meta property="og:description" content="1400-1600 覆盖所有点的最少矩形数目 题目描述 给你一个二维整数数组 point ，其中 points[i] = [xi, yi] 表示二维平面内的一个点。同时给你一个整数 w 。 你需要用矩形 覆盖所有 点。 每">
   <meta property="og:locale" content="zh-CN">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
@@ -15,7 +15,7 @@
     <meta property="article:modified_time" content="2024-05-02T12:38:59+08:00">
     <meta property="article:tag" content="算法">
 <meta name="twitter:card" content="summary"><meta name="twitter:title" content="1400-1600">
-<meta name="twitter:description" content="1400-1600 覆盖所有点的最少矩形数目 题目描述 给你一个二维整数数组 point ，其中 points[i] = [xi, yi] 表示二维平面内的一个点。同时给你一个整数 w 。你需要用矩形 覆盖所有 点。 每">
+<meta name="twitter:description" content="1400-1600 覆盖所有点的最少矩形数目 题目描述 给你一个二维整数数组 point ，其中 points[i] = [xi, yi] 表示二维平面内的一个点。同时给你一个整数 w 。 你需要用矩形 覆盖所有 点。 每">
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -83,9 +83,11 @@
             </div><div class="content" id="content"><h1 id="1400-1600">1400-1600</h1>
 <h1 id="覆盖所有点的最少矩形数目httpsleetcodecnproblemsminimum-rectangles-to-cover-points"><a href="https://leetcode.cn/problems/minimum-rectangles-to-cover-points/" target="_blank" rel="noopener noreffer ">覆盖所有点的最少矩形数目</a></h1>
 <p><strong>题目描述</strong></p>
-<pre tabindex="0"><code>给你一个二维整数数组 point ，其中 points[i] = [xi, yi] 表示二维平面内的一个点。同时给你一个整数 w 。你需要用矩形 覆盖所有 点。
+<pre tabindex="0"><code>给你一个二维整数数组 point ，其中 points[i] = [xi, yi] 表示二维平面内的一个点。同时给你一个整数 w 。
+你需要用矩形 覆盖所有 点。
 
-每个矩形的左下角在某个点 (x1, 0) 处，且右上角在某个点 (x2, y2) 处，其中 x1 &lt;= x2 且 y2 &gt;= 0 ，同时对于每个矩形都 必须 满足 x2 - x1 &lt;= w 。
+每个矩形的左下角在某个点 (x1, 0) 处，且右上角在某个点 (x2, y2) 处，其中 x1 &lt;= x2 且 y2 &gt;= 0 ，
+同时对于每个矩形都 必须 满足 x2 - x1 &lt;= w 。
 
 如果一个点在矩形内或者在边上，我们说这个点被矩形覆盖了。
 
