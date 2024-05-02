@@ -30,7 +30,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/Parksosaurus.github.io\/post\/1400-1600-zlnw6e.html"
-        },"genre": "posts","keywords": "算法","wordcount":  694 ,
+        },"genre": "posts","keywords": "算法","wordcount":  1314 ,
         "url": "https:\/\/Parksosaurus.github.io\/post\/1400-1600-zlnw6e.html","datePublished": "2024-05-02T11:36:48+08:00","dateModified": "2024-05-02T12:38:59+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -72,8 +72,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">1400-1600</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>parkso</a></span>&nbsp;<span class="post-category">included in <a href="/categories/cs%E6%8A%80%E6%9C%AF/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>CS技术</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-05-02">2024-05-02</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;694 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;2 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-05-02">2024-05-02</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1314 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;3 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -83,6 +83,7 @@
   <ul>
     <li><a href="#覆盖所有点的最少矩形数目httpsleetcodecnproblemsminimum-rectangles-to-cover-points"><a href="https://leetcode.cn/problems/minimum-rectangles-to-cover-points/">覆盖所有点的最少矩形数目</a></a></li>
     <li><a href="#1700-无法吃午餐的学生数量httpsleetcodecnproblemsnumber-of-students-unable-to-eat-lunch"><a href="https://leetcode.cn/problems/number-of-students-unable-to-eat-lunch/">1700. 无法吃午餐的学生数量</a></a></li>
+    <li><a href="#1237-找出给定方程的正整数解httpsleetcodecnproblemsfind-positive-integer-solution-for-a-given-equation"><a href="https://leetcode.cn/problems/find-positive-integer-solution-for-a-given-equation/">1237. 找出给定方程的正整数解</a></a></li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><h1 id="1400-1600">1400-1600</h1>
@@ -153,7 +154,67 @@ students[j] 是初始队列里第 j 名学生对三明治的喜好（j = 0 是�
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
 </span></span></span></code></pre></div><p><strong>总结</strong></p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-plaintext" data-lang="plaintext"><span class="line"><span class="cl">不用管队列怎么变的 直接把队列中的元素提取出来 求0和1的个数 然后再遍历三明治栈就好了
-</span></span></code></pre></div><p>‍</p>
+</span></span></code></pre></div><h2 id="1237-找出给定方程的正整数解httpsleetcodecnproblemsfind-positive-integer-solution-for-a-given-equation"><a href="https://leetcode.cn/problems/find-positive-integer-solution-for-a-given-equation/" target="_blank" rel="noopener noreffer ">1237. 找出给定方程的正整数解</a></h2>
+<p><strong>题目描述</strong></p>
+<pre tabindex="0"><code>给你一个函数  f(x, y) 和一个目标结果 z，函数公式未知，请你计算方程 f(x,y) == z 所有可能的正整数 数对 x 和 y。满足条件的结果数对可以按任意顺序返回。
+
+尽管函数的具体式子未知，但它是单调递增函数，也就是说：
+
+f(x, y) &lt; f(x + 1, y)
+f(x, y) &lt; f(x, y + 1)
+函数接口定义如下：
+
+interface CustomFunction {
+public:
+  // Returns some positive integer f(x, y) for two positive integers x and y based on a formula.
+  int f(int x, int y);
+};
+你的解决方案将按如下规则进行评判：
+
+判题程序有一个由 CustomFunction 的 9 种实现组成的列表，以及一种为特定的 z 生成所有有效数对的答案的方法。
+判题程序接受两个输入：function_id（决定使用哪种实现测试你的代码）以及目标结果 z 。
+判题程序将会调用你实现的 findSolution 并将你的结果与答案进行比较。
+如果你的结果与答案相符，那么解决方案将被视作正确答案，即 Accepted 。
+</code></pre><p><strong>示例</strong></p>
+<pre tabindex="0"><code>输入：function_id = 1, z = 5
+输出：[[1,4],[2,3],[3,2],[4,1]]
+解释：function_id = 1 暗含的函数式子为 f(x, y) = x + y
+以下 x 和 y 满足 f(x, y) 等于 5：
+x=1, y=4 -&gt; f(1, 4) = 1 + 4 = 5
+x=2, y=3 -&gt; f(2, 3) = 2 + 3 = 5
+x=3, y=2 -&gt; f(3, 2) = 3 + 2 = 5
+x=4, y=1 -&gt; f(4, 1) = 4 + 1 = 5
+</code></pre><p><strong>题解</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">class</span> <span class="nc">Solution</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="cm">/*  根据单调递增性，可画出类似于如下的矩阵，横向纵向都是递增的
+</span></span></span><span class="line"><span class="cl"><span class="cm">        从右上角看类似于一颗二叉搜索树
+</span></span></span><span class="line"><span class="cl"><span class="cm">        1 2 3 4
+</span></span></span><span class="line"><span class="cl"><span class="cm">        2 3 4 5
+</span></span></span><span class="line"><span class="cl"><span class="cm">        3 4 5 6
+</span></span></span><span class="line"><span class="cl"><span class="cm">        4 5 6 7
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="nf">findSolution</span><span class="p">(</span><span class="n">CustomFunction</span><span class="w"> </span><span class="n">fun</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">z</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">List</span><span class="o">&lt;</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">ans</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">&lt;&gt;</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">1</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">1000</span><span class="p">;</span><span class="w"> </span><span class="c1">// 从左上根节点开始搜索</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">1000</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="kt">int</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fun</span><span class="p">.</span><span class="na">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">f</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">z</span><span class="p">)</span><span class="w"> </span><span class="o">--</span><span class="n">y</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">f</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">z</span><span class="p">)</span><span class="w"> </span><span class="o">++</span><span class="n">x</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">else</span><span class="w"> </span><span class="n">ans</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">Arrays</span><span class="p">.</span><span class="na">asList</span><span class="p">(</span><span class="n">x</span><span class="o">++</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="o">--</span><span class="p">));</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">ans</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><p><strong>总结</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-plaintext" data-lang="plaintext"><span class="line"><span class="cl">本题其实和 15. 三数之和 是类似的，都可以使用相向双指针解决
+</span></span></code></pre></div><p>​<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://xducodert-blog.oss-cn-chengdu.aliyuncs.com/test/20240502211713.png"
+        data-srcset="https://xducodert-blog.oss-cn-chengdu.aliyuncs.com/test/20240502211713.png, https://xducodert-blog.oss-cn-chengdu.aliyuncs.com/test/20240502211713.png 1.5x, https://xducodert-blog.oss-cn-chengdu.aliyuncs.com/test/20240502211713.png 2x"
+        data-sizes="auto"
+        alt="https://xducodert-blog.oss-cn-chengdu.aliyuncs.com/test/20240502211713.png"
+        title="https://xducodert-blog.oss-cn-chengdu.aliyuncs.com/test/20240502211713.png" />​</p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
