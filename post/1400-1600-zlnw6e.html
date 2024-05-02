@@ -30,7 +30,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/Parksosaurus.github.io\/post\/1400-1600-zlnw6e.html"
-        },"genre": "posts","keywords": "算法","wordcount":  711 ,
+        },"genre": "posts","keywords": "算法","wordcount":  699 ,
         "url": "https:\/\/Parksosaurus.github.io\/post\/1400-1600-zlnw6e.html","datePublished": "2024-05-02T11:36:48+08:00","dateModified": "2024-05-02T12:38:59+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -72,7 +72,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">1400-1600</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>parkso</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-05-02">2024-05-02</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;711 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-05-02">2024-05-02</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;699 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;2 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
@@ -120,14 +120,16 @@
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-plaintext" data-lang="plaintext"><span class="line"><span class="cl">贪心
 </span></span></code></pre></div><h1 id="1700-无法吃午餐的学生数量httpsleetcodecnproblemsnumber-of-students-unable-to-eat-lunch"><a href="https://leetcode.cn/problems/number-of-students-unable-to-eat-lunch/" target="_blank" rel="noopener noreffer ">1700. 无法吃午餐的学生数量</a></h1>
 <p><strong>题目描述</strong></p>
-<pre tabindex="0"><code>学校的自助午餐提供圆形和方形的三明治，分别用数字 0 和 1 表示。所有学生站在一个队列里，每个学生要么喜欢圆形的要么喜欢方形的。
-餐厅里三明治的数量与学生的数量相同。所有三明治都放在一个 栈 里，每一轮：
+<pre tabindex="0"><code>学校的自助午餐提供圆形和方形的三明治，分别用数字 0 和 1 表示。所有学生站在一个队列里，
+每个学生要么喜欢圆形的要么喜欢方形的。餐厅里三明治的数量与学生的数量相同。所有三明治都放在一个 栈里，
+每一轮：
 
 如果队列最前面的学生 喜欢 栈顶的三明治，那么会 拿走它 并离开队列。
 否则，这名学生会 放弃这个三明治 并回到队列的尾部。
 这个过程会一直持续到队列里所有学生都不喜欢栈顶的三明治为止。
 
-给你两个整数数组 students 和 sandwiches ，其中 sandwiches[i] 是栈里面第 i​​​​​​ 个三明治的类型（i = 0 是栈的顶部）， students[j] 是初始队列里第 j​​​​​​ 名学生对三明治的喜好（j = 0 是队列的最开始位置）。请你返回无法吃午餐的学生数量。
+给你两个整数数组 students 和 sandwiches ，其中 sandwiches[i] 是栈里面第 i 个三明治的类型（i = 0 是栈的顶部），
+students[j] 是初始队列里第 j 名学生对三明治的喜好（j = 0 是队列的最开始位置）。请你返回无法吃午餐的学生数量。
 </code></pre><p><strong>示例</strong></p>
 <pre tabindex="0"><code>输入：students = [1,1,1,0,0,1], sandwiches = [1,0,0,0,1,1]
 输出：3
@@ -143,8 +145,7 @@
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
 </span></span></span></code></pre></div><p><strong>总结</strong></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-plaintext" data-lang="plaintext"><span class="line"><span class="cl">我sb了 其实不用管队列怎么变的 直接把队列中的元素提取出来 求0和1的个数 然后再遍历
-</span></span><span class="line"><span class="cl">三明治栈就好了
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-plaintext" data-lang="plaintext"><span class="line"><span class="cl">我sb了 其实不用管队列怎么变的 直接把队列中的元素提取出来 求0和1的个数 然后再遍历三明治栈就好了
 </span></span></code></pre></div></div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
