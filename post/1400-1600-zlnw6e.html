@@ -30,7 +30,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/Parksosaurus.github.io\/post\/1400-1600-zlnw6e.html"
-        },"genre": "posts","keywords": "算法","wordcount":  1868 ,
+        },"genre": "posts","keywords": "算法","wordcount":  2322 ,
         "url": "https:\/\/Parksosaurus.github.io\/post\/1400-1600-zlnw6e.html","datePublished": "2024-05-02T11:36:48+08:00","dateModified": "2024-05-02T12:38:59+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -72,8 +72,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">1400-1600</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>parkso</a></span>&nbsp;<span class="post-category">included in <a href="/categories/cs%E6%8A%80%E6%9C%AF/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>CS技术</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-05-02">2024-05-02</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1868 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;4 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-05-02">2024-05-02</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;2322 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;5 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -86,6 +86,7 @@
     <li><a href="#1237-找出给定方程的正整数解httpsleetcodecnproblemsfind-positive-integer-solution-for-a-given-equation"><a href="https://leetcode.cn/problems/find-positive-integer-solution-for-a-given-equation/">1237. 找出给定方程的正整数解</a></a></li>
     <li><a href="#3101-交替子数组计数httpsleetcodecnproblemscount-alternating-subarrays"><a href="https://leetcode.cn/problems/count-alternating-subarrays/">3101. 交替子数组计数</a></a></li>
     <li><a href="#1457-二叉树中的伪回文路径httpsleetcodecnproblemspseudo-palindromic-paths-in-a-binary-tree"><a href="https://leetcode.cn/problems/pseudo-palindromic-paths-in-a-binary-tree/">1457. 二叉树中的伪回文路径</a></a></li>
+    <li><a href="#2734-执行子串操作后的字典序最小字符串httpsleetcodecnproblemslexicographically-smallest-string-after-substring-operation"><a href="https://leetcode.cn/problems/lexicographically-smallest-string-after-substring-operation/">2734. 执行子串操作后的字典序最小字符串</a></a></li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><h1 id="1400-1600">1400-1600</h1>
@@ -278,6 +279,48 @@ nums 。
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-plaintext" data-lang="plaintext"><span class="line"><span class="cl">这里直接把灵神的题解粘过来了 
 </span></span><span class="line"><span class="cl">(mask &amp; (mask - 1)) == 0这个实在是太妙了，通过这个式子可就可以判断
 </span></span><span class="line"><span class="cl">一个二进制数中是否最多只有一个1
+</span></span></code></pre></div><h2 id="2734-执行子串操作后的字典序最小字符串httpsleetcodecnproblemslexicographically-smallest-string-after-substring-operation"><a href="https://leetcode.cn/problems/lexicographically-smallest-string-after-substring-operation/" target="_blank" rel="noopener noreffer ">2734. 执行子串操作后的字典序最小字符串</a></h2>
+<p><strong>题目描述</strong></p>
+<pre tabindex="0"><code>给你一个仅由小写英文字母组成的字符串 s 。在一步操作中，你可以完成以下行为：
+
+选择 s 的任一非空子字符串，可能是整个字符串，接着将字符串中的每一个字符替换为英文字母表中的前一个字符。例如，&#39;b&#39; 用 &#39;a&#39; 替换，&#39;a&#39; 用 &#39;z&#39; 替换。
+返回执行上述操作 恰好一次 后可以获得的 字典序最小 的字符串。
+
+子字符串 是字符串中的一个连续字符序列。
+
+现有长度相同的两个字符串 x 和 字符串 y ，在满足 x[i] != y[i] 的第一个位置 i 上，如果  x[i] 在字母表中先于 y[i] 出现，则认为字符串 x 比字符串 y 字典序更小 。
+ 
+</code></pre><p><strong>示例</strong></p>
+<pre tabindex="0"><code>输入：s = &#34;cbabc&#34;
+输出：&#34;baabc&#34;
+解释：我们选择从下标 0 开始、到下标 1 结束的子字符串执行操作。 
+可以证明最终得到的字符串是字典序最小的。
+</code></pre><p><strong>题解</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">class</span> <span class="nc">Solution</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">smallestString</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">s</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kt">char</span><span class="o">[]</span><span class="w"> </span><span class="n">chars</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="na">toCharArray</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">len</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">chars</span><span class="p">.</span><span class="na">length</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kt">boolean</span><span class="w"> </span><span class="n">flag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">len</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="kt">char</span><span class="w"> </span><span class="n">ch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">chars</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">if</span><span class="p">(</span><span class="n">ch</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="sc">&#39;a&#39;</span><span class="p">){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">flag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">ch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">char</span><span class="p">)(</span><span class="n">ch</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">1</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">chars</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ch</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="p">}</span><span class="k">else</span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="k">if</span><span class="p">(</span><span class="n">flag</span><span class="p">){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                    </span><span class="k">break</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">flag</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">false</span><span class="p">){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">chars</span><span class="o">[</span><span class="n">len</span><span class="o">-</span><span class="n">1</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sc">&#39;z&#39;</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">String</span><span class="p">(</span><span class="n">chars</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><p><strong>总结</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-plaintext" data-lang="plaintext"><span class="line"><span class="cl">贪心 但这题很傻呗 还必须得操作一次 即如果只有&#39;a&#39; 必须把最后一个&#39;a&#39;变成 &#34;z&#34;
 </span></span></code></pre></div></div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
